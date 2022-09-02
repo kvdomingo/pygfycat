@@ -1,3 +1,30 @@
 # gpycat
 
-Python Gfycat API (WIP)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/gpycat?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/kvdomingo/pygfycat?style=for-the-badge)
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/kvdomingo/pygfycat?include_prereleases&style=for-the-badge)
+
+This is a WIP unofficial Python wrapper for the Gfycat web API.
+
+## Installation
+```shell
+# pip
+pip install vlive
+
+# poetry
+poetry add vlive
+```
+
+## Usage
+
+```python
+from gpycat import gpycat
+
+gpycat.auth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
+item = gpycat.get_gfycat("zestycreepyasiaticlesserfreshwaterclam")
+```
+
+Output:
+```shell
+> GfyItem(title="...", description="...", avgColor="...", content_urls={...}, ...)
+```
