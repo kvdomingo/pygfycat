@@ -1,37 +1,19 @@
-import json
+import io
 from os import PathLike
+from pathlib import Path
 from typing import Any, Literal
 
 import requests.exceptions
 from loguru import logger
 from pydantic import AnyHttpUrl
-from requests import Response, Session
+from requests import Response
+from requests.adapters import HTTPAdapter, Retry
+from requests_toolbelt import MultipartEncoder
 
 from .models import AlbumNode, GfyItem
+from .session import GfySession
 
 BASE_URL = "https://api.gfycat.com/v1"
-
-
-class GfySession(Session):
-    @staticmethod
-    def _check_json_body(**kwargs):
-        data = kwargs.get("data")
-        if isinstance(data, dict):
-            data = json.dumps(data)
-            kwargs.update({"data": data})
-        return kwargs
-
-    def post(self, *args, **kwargs):
-        kwargs = self._check_json_body(**kwargs)
-        return super().post(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        kwargs = self._check_json_body(**kwargs)
-        return super().put(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        kwargs = self._check_json_body(**kwargs)
-        return super().patch(*args, **kwargs)
 
 
 class Gfycat:
@@ -48,14 +30,24 @@ class Gfycat:
             logger.error(response.text)
             raise requests.exceptions.HTTPError(response.text)
 
+    @staticmethod
     def _update_last_status(self, response: Response, *args, **kwargs):
         self.last_request_status = response.status_code
 
-    def _refresh_on_expire(self, response: Response, *args, **kwargs):
+    @staticmethod
+    def _refresh_on_expire(response: Response, *args, **kwargs):
         raise NotImplemented
 
-    session = GfySession()
-    session.hooks.update({"response": [_raise_if_not_ok, _update_last_status]})
+    def __init__(self):
+        self.session = GfySession()
+        self.session.hooks.update(
+            {
+                "response": [
+                    self._raise_if_not_ok,
+                    lambda *args, **kwargs: self._update_last_status(self, *args, **kwargs),
+                ]
+            }
+        )
 
     @staticmethod
     def transform_content_url_key(gfy_item: dict):
@@ -101,9 +93,9 @@ class Gfycat:
                 raise ValueError("Username is blank")
             if not password:
                 raise ValueError("Password is blank")
-            data.update(dict(username=username, password=password))
+            data.update({"username": username, "password": password})
         elif grant_type == "refresh":
-            data.update(dict(refresh_token=self.credentials["refresh_token"]))
+            data.update({"refresh_token": self.credentials["refresh_token"]})
         else:
             raise NotImplemented
         self.client_id = client_id
@@ -129,8 +121,49 @@ class Gfycat:
     def new_gfycat_from_url(self, url: AnyHttpUrl):
         raise NotImplemented
 
-    def new_gfycat_from_file(self, file: str | PathLike):
-        raise NotImplemented
+    def new_gfycat_from_file(
+        self,
+        file: str | PathLike,
+        *,
+        title: str = None,
+        description: str = None,
+        tags: list[str] = None,
+        nsfw: bool = False,
+        ignore_md5_check: bool = False,
+        keep_audio: True,
+        private: False,
+    ) -> str:
+        session = self.session
+        file = Path(file).resolve()
+        data = {
+            "title": file.name if title is None else title,
+            "nsfw": nsfw,
+            "keepAudio": keep_audio,
+            "noMd5": ignore_md5_check,
+            "private": private,
+        }
+        if description is not None:
+            data["description"] = description
+        if tags is not None:
+            data["tags"] = tags
+        retries = Retry(total=100, backoff_factor=0.1)
+        session.mount("https://", adapter=HTTPAdapter(max_retries=retries))
+        res = session.post(f"{BASE_URL}/gfycats", data=data)
+        metadata = res.json()
+        with open(file, "rb") as f:
+            new_file = io.BytesIO(f.read())
+            new_file.name = metadata["gfyname"]
+            new_file.seek(0)
+            m = MultipartEncoder(
+                fields={
+                    "key": metadata["gfyname"],
+                    "file": (metadata["gfyname"], new_file, "video/mp4"),
+                }
+            )
+            res = requests.post("https://filedrop.gfycat.com", data=m, headers={"Content-Type": m.content_type})
+        if res.status_code >= 400:
+            raise requests.exceptions.HTTPError(res.text)
+        return metadata["gfyname"]
 
     def check_upload_status(self, gfy_name: str):
         raise NotImplemented
@@ -206,4 +239,4 @@ class Gfycat:
         logger.info(f'Created album "{title}"')
 
 
-gfycat = Gfycat()
+gpycat = Gfycat()
