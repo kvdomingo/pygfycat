@@ -9,11 +9,9 @@ load_dotenv()
 
 def test_auth():
     gpycat.auth(
-        grant_type="password",
+        grant_type="client_credentials",
         client_id=os.environ.get("CLIENT_ID"),
         client_secret=os.environ.get("CLIENT_SECRET"),
-        username=os.environ.get("USERNAME"),
-        password=os.environ.get("PASSWORD"),
     )
     assert gpycat.last_request_status == 200
     assert len(gpycat.credentials.keys()) > 0
