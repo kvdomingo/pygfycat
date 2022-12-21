@@ -8,17 +8,21 @@ This is a WIP unofficial Python wrapper for the Gfycat web API.
 
 ## Installation
 ```shell
-# pip
-pip install vlive
+# Using pip
+pip install gpycat
 
-# poetry
-poetry add vlive
+# OR
+
+# Using poetry
+poetry add gpycat
 ```
 
 ## Usage
 
 ```python
 from gpycat import gpycat
+
+# Import your client ID/secret from environment variables
 
 gpycat.auth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
 item = gpycat.get_gfycat("zestycreepyasiaticlesserfreshwaterclam")
