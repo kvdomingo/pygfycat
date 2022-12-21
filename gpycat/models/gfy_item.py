@@ -23,31 +23,31 @@ class ContentUrlsContent(BaseModel):
 
 
 class ContentUrls(BaseModel):
-    gif100px: ContentUrlsContent
-    largeGif: ContentUrlsContent
-    max1mbGif: ContentUrlsContent
-    max2mbGif: ContentUrlsContent
-    max5mbGif: ContentUrlsContent
-    mobile: ContentUrlsContent
-    mobilePoster: ContentUrlsContent
-    mp4: ContentUrlsContent
-    webm: ContentUrlsContent
-    webp: ContentUrlsContent
+    gif100px: Optional[ContentUrlsContent]
+    largeGif: Optional[ContentUrlsContent]
+    max1mbGif: Optional[ContentUrlsContent]
+    max2mbGif: Optional[ContentUrlsContent]
+    max5mbGif: Optional[ContentUrlsContent]
+    mobile: Optional[ContentUrlsContent]
+    mobilePoster: Optional[ContentUrlsContent]
+    mp4: Optional[ContentUrlsContent]
+    webm: Optional[ContentUrlsContent]
+    webp: Optional[ContentUrlsContent]
 
 
 class GfyItem(BaseModel):
     avgColor: Color
     content_urls: ContentUrls
     createDate: str
-    description: str
+    description: Optional[str]
     frameRate: conint(gt=0) | confloat(gt=0)
     gatekeeper: int
     gfyId: str
     gfyName: str
     gfyNumber: str
-    gfySlug: str
-    gif100px: AnyHttpUrl
-    gifUrl: AnyHttpUrl
+    gfySlug: Optional[str]
+    gif100px: Optional[AnyHttpUrl]
+    gifUrl: Optional[AnyHttpUrl]
     hasAudio: bool
     hasTransparency: bool
     height: conint(gt=0)
@@ -58,23 +58,23 @@ class GfyItem(BaseModel):
     max2mbGif: AnyHttpUrl
     max5mbGif: AnyHttpUrl
     md5: str
-    miniPosterUrl: AnyHttpUrl
+    miniPosterUrl: Optional[AnyHttpUrl]
     miniUrl: AnyHttpUrl
-    mobilePosterUrl: AnyHttpUrl
-    mobileUrl: AnyHttpUrl
+    mobilePosterUrl: Optional[AnyHttpUrl]
+    mobileUrl: Optional[AnyHttpUrl]
     nsfw: conint(ge=0)
     numFrames: conint(gt=0)
-    posterUrl: str
+    posterUrl: Optional[str]
     published: conint(ge=0)
     tags: list[Optional[str]]
-    thumb100PosterUrl: AnyHttpUrl
-    title: str
-    userData: UserData
-    userDisplayName: str
+    thumb100PosterUrl: Optional[AnyHttpUrl]
+    title: Optional[str]
+    userData: Optional[UserData]
+    userDisplayName: Optional[str]
     username: str
-    userProfileImageUrl: AnyHttpUrl
+    userProfileImageUrl: Optional[AnyHttpUrl]
     views: conint(ge=0)
     webmSize: confloat(gt=0)
-    webmUrl: AnyHttpUrl
+    webmUrl: Optional[AnyHttpUrl]
     webpUrl: AnyHttpUrl
     width: conint(gt=0)
