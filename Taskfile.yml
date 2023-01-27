@@ -1,0 +1,12 @@
+version: 3
+
+dotenv:
+  - .env
+
+tasks:
+  setup:
+    desc: Run initial setup
+    cmds:
+      - poetry install
+      - poetry run python -m scripts.make_dotenv
+      - poetry run python -m scripts.make_dotenvrc
