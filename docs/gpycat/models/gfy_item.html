@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>gpycat.models.gfy_item API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gpycat.models.gfy_item</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from typing import Optional
+
+from pydantic import AnyHttpUrl, BaseModel, confloat, conint
+from pydantic.color import Color
+
+
+class UserData(BaseModel):
+    followers: conint(ge=0)
+    following: conint(ge=0)
+    name: str
+    profileImageUrl: AnyHttpUrl
+    subscription: conint(ge=0)
+    username: str
+    verified: bool
+    views: conint(ge=0)
+
+
+class ContentUrlsContent(BaseModel):
+    url: AnyHttpUrl
+    size: confloat(gt=0)
+    width: conint(gt=0)
+    height: conint(gt=0)
+
+
+class ContentUrls(BaseModel):
+    gif100px: Optional[ContentUrlsContent]
+    largeGif: Optional[ContentUrlsContent]
+    max1mbGif: Optional[ContentUrlsContent]
+    max2mbGif: Optional[ContentUrlsContent]
+    max5mbGif: Optional[ContentUrlsContent]
+    mobile: Optional[ContentUrlsContent]
+    mobilePoster: Optional[ContentUrlsContent]
+    mp4: Optional[ContentUrlsContent]
+    webm: Optional[ContentUrlsContent]
+    webp: Optional[ContentUrlsContent]
+
+
+class GfyItem(BaseModel):
+    avgColor: Color
+    content_urls: ContentUrls
+    createDate: str
+    description: Optional[str]
+    frameRate: conint(gt=0) | confloat(gt=0)
+    gatekeeper: int
+    gfyId: str
+    gfyName: str
+    gfyNumber: str
+    gfySlug: Optional[str]
+    gif100px: Optional[AnyHttpUrl]
+    gifUrl: Optional[AnyHttpUrl]
+    hasAudio: bool
+    hasTransparency: bool
+    height: conint(gt=0)
+    isSticker: bool
+    languageCategories: list[Optional[str]]
+    likes: conint(ge=0)
+    max1mbGif: AnyHttpUrl
+    max2mbGif: AnyHttpUrl
+    max5mbGif: AnyHttpUrl
+    md5: str
+    miniPosterUrl: Optional[AnyHttpUrl]
+    miniUrl: AnyHttpUrl
+    mobilePosterUrl: Optional[AnyHttpUrl]
+    mobileUrl: Optional[AnyHttpUrl]
+    nsfw: conint(ge=0)
+    numFrames: conint(gt=0)
+    posterUrl: Optional[str]
+    published: conint(ge=0)
+    tags: list[Optional[str]]
+    thumb100PosterUrl: Optional[AnyHttpUrl]
+    title: Optional[str]
+    userData: Optional[UserData]
+    userDisplayName: Optional[str]
+    username: str
+    userProfileImageUrl: Optional[AnyHttpUrl]
+    views: conint(ge=0)
+    webmSize: confloat(gt=0)
+    webmUrl: Optional[AnyHttpUrl]
+    webpUrl: AnyHttpUrl
+    width: conint(gt=0)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="gpycat.models.gfy_item.ContentUrls"><code class="flex name class">
+<span>class <span class="ident">ContentUrls</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ContentUrls(BaseModel):
+    gif100px: Optional[ContentUrlsContent]
+    largeGif: Optional[ContentUrlsContent]
+    max1mbGif: Optional[ContentUrlsContent]
+    max2mbGif: Optional[ContentUrlsContent]
+    max5mbGif: Optional[ContentUrlsContent]
+    mobile: Optional[ContentUrlsContent]
+    mobilePoster: Optional[ContentUrlsContent]
+    mp4: Optional[ContentUrlsContent]
+    webm: Optional[ContentUrlsContent]
+    webp: Optional[ContentUrlsContent]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="gpycat.models.gfy_item.ContentUrls.gif100px"><code class="name">var <span class="ident">gif100px</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.largeGif"><code class="name">var <span class="ident">largeGif</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.max1mbGif"><code class="name">var <span class="ident">max1mbGif</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.max2mbGif"><code class="name">var <span class="ident">max2mbGif</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.max5mbGif"><code class="name">var <span class="ident">max5mbGif</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.mobile"><code class="name">var <span class="ident">mobile</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.mobilePoster"><code class="name">var <span class="ident">mobilePoster</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.mp4"><code class="name">var <span class="ident">mp4</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.webm"><code class="name">var <span class="ident">webm</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrls.webp"><code class="name">var <span class="ident">webp</span> : Optional[<a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrlsContent"><code class="flex name class">
+<span>class <span class="ident">ContentUrlsContent</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ContentUrlsContent(BaseModel):
+    url: AnyHttpUrl
+    size: confloat(gt=0)
+    width: conint(gt=0)
+    height: conint(gt=0)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="gpycat.models.gfy_item.ContentUrlsContent.height"><code class="name">var <span class="ident">height</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrlsContent.size"><code class="name">var <span class="ident">size</span> : gpycat.models.gfy_item.ConstrainedFloatValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrlsContent.url"><code class="name">var <span class="ident">url</span> : pydantic.networks.AnyHttpUrl</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.ContentUrlsContent.width"><code class="name">var <span class="ident">width</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem"><code class="flex name class">
+<span>class <span class="ident">GfyItem</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GfyItem(BaseModel):
+    avgColor: Color
+    content_urls: ContentUrls
+    createDate: str
+    description: Optional[str]
+    frameRate: conint(gt=0) | confloat(gt=0)
+    gatekeeper: int
+    gfyId: str
+    gfyName: str
+    gfyNumber: str
+    gfySlug: Optional[str]
+    gif100px: Optional[AnyHttpUrl]
+    gifUrl: Optional[AnyHttpUrl]
+    hasAudio: bool
+    hasTransparency: bool
+    height: conint(gt=0)
+    isSticker: bool
+    languageCategories: list[Optional[str]]
+    likes: conint(ge=0)
+    max1mbGif: AnyHttpUrl
+    max2mbGif: AnyHttpUrl
+    max5mbGif: AnyHttpUrl
+    md5: str
+    miniPosterUrl: Optional[AnyHttpUrl]
+    miniUrl: AnyHttpUrl
+    mobilePosterUrl: Optional[AnyHttpUrl]
+    mobileUrl: Optional[AnyHttpUrl]
+    nsfw: conint(ge=0)
+    numFrames: conint(gt=0)
+    posterUrl: Optional[str]
+    published: conint(ge=0)
+    tags: list[Optional[str]]
+    thumb100PosterUrl: Optional[AnyHttpUrl]
+    title: Optional[str]
+    userData: Optional[UserData]
+    userDisplayName: Optional[str]
+    username: str
+    userProfileImageUrl: Optional[AnyHttpUrl]
+    views: conint(ge=0)
+    webmSize: confloat(gt=0)
+    webmUrl: Optional[AnyHttpUrl]
+    webpUrl: AnyHttpUrl
+    width: conint(gt=0)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="gpycat.models.gfy_item.GfyItem.avgColor"><code class="name">var <span class="ident">avgColor</span> : pydantic.color.Color</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.content_urls"><code class="name">var <span class="ident">content_urls</span> : <a title="gpycat.models.gfy_item.ContentUrls" href="#gpycat.models.gfy_item.ContentUrls">ContentUrls</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.createDate"><code class="name">var <span class="ident">createDate</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.description"><code class="name">var <span class="ident">description</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.frameRate"><code class="name">var <span class="ident">frameRate</span> : gpycat.models.gfy_item.ConstrainedIntValue | gpycat.models.gfy_item.ConstrainedFloatValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.gatekeeper"><code class="name">var <span class="ident">gatekeeper</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.gfyId"><code class="name">var <span class="ident">gfyId</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.gfyName"><code class="name">var <span class="ident">gfyName</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.gfyNumber"><code class="name">var <span class="ident">gfyNumber</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.gfySlug"><code class="name">var <span class="ident">gfySlug</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.gif100px"><code class="name">var <span class="ident">gif100px</span> : Optional[pydantic.networks.AnyHttpUrl]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.gifUrl"><code class="name">var <span class="ident">gifUrl</span> : Optional[pydantic.networks.AnyHttpUrl]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.hasAudio"><code class="name">var <span class="ident">hasAudio</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.hasTransparency"><code class="name">var <span class="ident">hasTransparency</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.height"><code class="name">var <span class="ident">height</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.isSticker"><code class="name">var <span class="ident">isSticker</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.languageCategories"><code class="name">var <span class="ident">languageCategories</span> : list[typing.Optional[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.likes"><code class="name">var <span class="ident">likes</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.max1mbGif"><code class="name">var <span class="ident">max1mbGif</span> : pydantic.networks.AnyHttpUrl</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.max2mbGif"><code class="name">var <span class="ident">max2mbGif</span> : pydantic.networks.AnyHttpUrl</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.max5mbGif"><code class="name">var <span class="ident">max5mbGif</span> : pydantic.networks.AnyHttpUrl</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.md5"><code class="name">var <span class="ident">md5</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.miniPosterUrl"><code class="name">var <span class="ident">miniPosterUrl</span> : Optional[pydantic.networks.AnyHttpUrl]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.miniUrl"><code class="name">var <span class="ident">miniUrl</span> : pydantic.networks.AnyHttpUrl</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.mobilePosterUrl"><code class="name">var <span class="ident">mobilePosterUrl</span> : Optional[pydantic.networks.AnyHttpUrl]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.mobileUrl"><code class="name">var <span class="ident">mobileUrl</span> : Optional[pydantic.networks.AnyHttpUrl]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.nsfw"><code class="name">var <span class="ident">nsfw</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.numFrames"><code class="name">var <span class="ident">numFrames</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.posterUrl"><code class="name">var <span class="ident">posterUrl</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.published"><code class="name">var <span class="ident">published</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.tags"><code class="name">var <span class="ident">tags</span> : list[typing.Optional[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.thumb100PosterUrl"><code class="name">var <span class="ident">thumb100PosterUrl</span> : Optional[pydantic.networks.AnyHttpUrl]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.title"><code class="name">var <span class="ident">title</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.userData"><code class="name">var <span class="ident">userData</span> : Optional[<a title="gpycat.models.gfy_item.UserData" href="#gpycat.models.gfy_item.UserData">UserData</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.userDisplayName"><code class="name">var <span class="ident">userDisplayName</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.userProfileImageUrl"><code class="name">var <span class="ident">userProfileImageUrl</span> : Optional[pydantic.networks.AnyHttpUrl]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.username"><code class="name">var <span class="ident">username</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.views"><code class="name">var <span class="ident">views</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.webmSize"><code class="name">var <span class="ident">webmSize</span> : gpycat.models.gfy_item.ConstrainedFloatValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.webmUrl"><code class="name">var <span class="ident">webmUrl</span> : Optional[pydantic.networks.AnyHttpUrl]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.webpUrl"><code class="name">var <span class="ident">webpUrl</span> : pydantic.networks.AnyHttpUrl</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.GfyItem.width"><code class="name">var <span class="ident">width</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="gpycat.models.gfy_item.UserData"><code class="flex name class">
+<span>class <span class="ident">UserData</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UserData(BaseModel):
+    followers: conint(ge=0)
+    following: conint(ge=0)
+    name: str
+    profileImageUrl: AnyHttpUrl
+    subscription: conint(ge=0)
+    username: str
+    verified: bool
+    views: conint(ge=0)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="gpycat.models.gfy_item.UserData.followers"><code class="name">var <span class="ident">followers</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.UserData.following"><code class="name">var <span class="ident">following</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.UserData.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.UserData.profileImageUrl"><code class="name">var <span class="ident">profileImageUrl</span> : pydantic.networks.AnyHttpUrl</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.UserData.subscription"><code class="name">var <span class="ident">subscription</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.UserData.username"><code class="name">var <span class="ident">username</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.UserData.verified"><code class="name">var <span class="ident">verified</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.models.gfy_item.UserData.views"><code class="name">var <span class="ident">views</span> : gpycat.models.gfy_item.ConstrainedIntValue</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="gpycat.models" href="index.html">gpycat.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="gpycat.models.gfy_item.ContentUrls" href="#gpycat.models.gfy_item.ContentUrls">ContentUrls</a></code></h4>
+<ul class="two-column">
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.gif100px" href="#gpycat.models.gfy_item.ContentUrls.gif100px">gif100px</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.largeGif" href="#gpycat.models.gfy_item.ContentUrls.largeGif">largeGif</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.max1mbGif" href="#gpycat.models.gfy_item.ContentUrls.max1mbGif">max1mbGif</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.max2mbGif" href="#gpycat.models.gfy_item.ContentUrls.max2mbGif">max2mbGif</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.max5mbGif" href="#gpycat.models.gfy_item.ContentUrls.max5mbGif">max5mbGif</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.mobile" href="#gpycat.models.gfy_item.ContentUrls.mobile">mobile</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.mobilePoster" href="#gpycat.models.gfy_item.ContentUrls.mobilePoster">mobilePoster</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.mp4" href="#gpycat.models.gfy_item.ContentUrls.mp4">mp4</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.webm" href="#gpycat.models.gfy_item.ContentUrls.webm">webm</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrls.webp" href="#gpycat.models.gfy_item.ContentUrls.webp">webp</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="gpycat.models.gfy_item.ContentUrlsContent" href="#gpycat.models.gfy_item.ContentUrlsContent">ContentUrlsContent</a></code></h4>
+<ul class="">
+<li><code><a title="gpycat.models.gfy_item.ContentUrlsContent.height" href="#gpycat.models.gfy_item.ContentUrlsContent.height">height</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrlsContent.size" href="#gpycat.models.gfy_item.ContentUrlsContent.size">size</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrlsContent.url" href="#gpycat.models.gfy_item.ContentUrlsContent.url">url</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.ContentUrlsContent.width" href="#gpycat.models.gfy_item.ContentUrlsContent.width">width</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="gpycat.models.gfy_item.GfyItem" href="#gpycat.models.gfy_item.GfyItem">GfyItem</a></code></h4>
+<ul class="two-column">
+<li><code><a title="gpycat.models.gfy_item.GfyItem.avgColor" href="#gpycat.models.gfy_item.GfyItem.avgColor">avgColor</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.content_urls" href="#gpycat.models.gfy_item.GfyItem.content_urls">content_urls</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.createDate" href="#gpycat.models.gfy_item.GfyItem.createDate">createDate</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.description" href="#gpycat.models.gfy_item.GfyItem.description">description</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.frameRate" href="#gpycat.models.gfy_item.GfyItem.frameRate">frameRate</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.gatekeeper" href="#gpycat.models.gfy_item.GfyItem.gatekeeper">gatekeeper</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.gfyId" href="#gpycat.models.gfy_item.GfyItem.gfyId">gfyId</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.gfyName" href="#gpycat.models.gfy_item.GfyItem.gfyName">gfyName</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.gfyNumber" href="#gpycat.models.gfy_item.GfyItem.gfyNumber">gfyNumber</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.gfySlug" href="#gpycat.models.gfy_item.GfyItem.gfySlug">gfySlug</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.gif100px" href="#gpycat.models.gfy_item.GfyItem.gif100px">gif100px</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.gifUrl" href="#gpycat.models.gfy_item.GfyItem.gifUrl">gifUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.hasAudio" href="#gpycat.models.gfy_item.GfyItem.hasAudio">hasAudio</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.hasTransparency" href="#gpycat.models.gfy_item.GfyItem.hasTransparency">hasTransparency</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.height" href="#gpycat.models.gfy_item.GfyItem.height">height</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.isSticker" href="#gpycat.models.gfy_item.GfyItem.isSticker">isSticker</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.languageCategories" href="#gpycat.models.gfy_item.GfyItem.languageCategories">languageCategories</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.likes" href="#gpycat.models.gfy_item.GfyItem.likes">likes</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.max1mbGif" href="#gpycat.models.gfy_item.GfyItem.max1mbGif">max1mbGif</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.max2mbGif" href="#gpycat.models.gfy_item.GfyItem.max2mbGif">max2mbGif</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.max5mbGif" href="#gpycat.models.gfy_item.GfyItem.max5mbGif">max5mbGif</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.md5" href="#gpycat.models.gfy_item.GfyItem.md5">md5</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.miniPosterUrl" href="#gpycat.models.gfy_item.GfyItem.miniPosterUrl">miniPosterUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.miniUrl" href="#gpycat.models.gfy_item.GfyItem.miniUrl">miniUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.mobilePosterUrl" href="#gpycat.models.gfy_item.GfyItem.mobilePosterUrl">mobilePosterUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.mobileUrl" href="#gpycat.models.gfy_item.GfyItem.mobileUrl">mobileUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.nsfw" href="#gpycat.models.gfy_item.GfyItem.nsfw">nsfw</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.numFrames" href="#gpycat.models.gfy_item.GfyItem.numFrames">numFrames</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.posterUrl" href="#gpycat.models.gfy_item.GfyItem.posterUrl">posterUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.published" href="#gpycat.models.gfy_item.GfyItem.published">published</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.tags" href="#gpycat.models.gfy_item.GfyItem.tags">tags</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.thumb100PosterUrl" href="#gpycat.models.gfy_item.GfyItem.thumb100PosterUrl">thumb100PosterUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.title" href="#gpycat.models.gfy_item.GfyItem.title">title</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.userData" href="#gpycat.models.gfy_item.GfyItem.userData">userData</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.userDisplayName" href="#gpycat.models.gfy_item.GfyItem.userDisplayName">userDisplayName</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.userProfileImageUrl" href="#gpycat.models.gfy_item.GfyItem.userProfileImageUrl">userProfileImageUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.username" href="#gpycat.models.gfy_item.GfyItem.username">username</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.views" href="#gpycat.models.gfy_item.GfyItem.views">views</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.webmSize" href="#gpycat.models.gfy_item.GfyItem.webmSize">webmSize</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.webmUrl" href="#gpycat.models.gfy_item.GfyItem.webmUrl">webmUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.webpUrl" href="#gpycat.models.gfy_item.GfyItem.webpUrl">webpUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.GfyItem.width" href="#gpycat.models.gfy_item.GfyItem.width">width</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="gpycat.models.gfy_item.UserData" href="#gpycat.models.gfy_item.UserData">UserData</a></code></h4>
+<ul class="two-column">
+<li><code><a title="gpycat.models.gfy_item.UserData.followers" href="#gpycat.models.gfy_item.UserData.followers">followers</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.UserData.following" href="#gpycat.models.gfy_item.UserData.following">following</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.UserData.name" href="#gpycat.models.gfy_item.UserData.name">name</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.UserData.profileImageUrl" href="#gpycat.models.gfy_item.UserData.profileImageUrl">profileImageUrl</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.UserData.subscription" href="#gpycat.models.gfy_item.UserData.subscription">subscription</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.UserData.username" href="#gpycat.models.gfy_item.UserData.username">username</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.UserData.verified" href="#gpycat.models.gfy_item.UserData.verified">verified</a></code></li>
+<li><code><a title="gpycat.models.gfy_item.UserData.views" href="#gpycat.models.gfy_item.UserData.views">views</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

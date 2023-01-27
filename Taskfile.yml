@@ -1,5 +1,8 @@
 version: 3
 
+env:
+  NAME: gpycat
+
 dotenv:
   - .env
 
@@ -10,3 +13,13 @@ tasks:
       - poetry install
       - poetry run python -m scripts.make_dotenv
       - poetry run python -m scripts.make_dotenvrc
+
+  dev-docs:
+    desc: Run local server for docs
+    cmds:
+      - poetry run pdoc --http :5000 {{.NAME}}
+
+  build-docs:
+    desc: Generate docs static files
+    cmds:
+      - poetry run pdoc --html --output-dir docs/ {{.NAME}}
