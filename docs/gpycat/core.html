@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>gpycat.core API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gpycat.core</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import io
+from os import PathLike
+from pathlib import Path
+from typing import Any, Literal
+
+import requests.exceptions
+from loguru import logger
+from pydantic import AnyHttpUrl
+from requests import Response
+from requests.adapters import HTTPAdapter, Retry
+from requests_toolbelt import MultipartEncoder
+
+from .models import AlbumNode, GfyItem
+from .session import GfySession
+
+BASE_URL = &#34;https://api.gfycat.com/v1&#34;
+
+
+class Gfycat:
+    client_id: str = &#34;&#34;
+    client_secret: str = &#34;&#34;
+    username: str = &#34;&#34;
+    password: str = &#34;&#34;
+    credentials: dict[str, str | int] = {}
+    last_request_status: int = None
+
+    @staticmethod
+    def _raise_if_not_ok(response: Response, *args, **kwargs):
+        if not response.ok:
+            logger.error(response.text)
+            raise requests.exceptions.HTTPError(response.text)
+
+    @staticmethod
+    def _update_last_status(self, response: Response, *args, **kwargs):
+        self.last_request_status = response.status_code
+
+    @staticmethod
+    def _refresh_on_expire(response: Response, *args, **kwargs):
+        raise NotImplemented
+
+    def __init__(self):
+        self.session = GfySession()
+        self.session.hooks.update(
+            {
+                &#34;response&#34;: [
+                    self._raise_if_not_ok,
+                    lambda *args, **kwargs: self._update_last_status(self, *args, **kwargs),
+                ]
+            }
+        )
+
+    @staticmethod
+    def transform_content_url_key(gfy_item: dict):
+        return {
+            **gfy_item,
+            &#34;content_urls&#34;: {
+                **gfy_item[&#34;content_urls&#34;],
+                &#34;gif100px&#34;: gfy_item[&#34;content_urls&#34;][&#34;100pxGif&#34;],
+            },
+        }
+
+    @staticmethod
+    def transform_dashed_key(node: dict):
+        for k, v in node.items():
+            if &#34;-&#34; in k:
+                undashed: list[str] = k.split(&#34;-&#34;)
+                undashed = [u.capitalize() for i, u in enumerate(undashed) if i &gt; 0]
+                new_k = &#34;&#34;.join(undashed)
+                node[new_k] = v
+                del node[k]
+        return node
+
+    def auth(
+        self,
+        *,
+        client_id: str,
+        client_secret: str,
+        username: str = &#34;&#34;,
+        password: str = &#34;&#34;,
+        grant_type: Literal[
+            &#34;client_credentials&#34;, &#34;password&#34;, &#34;refresh&#34;, &#34;convert_code&#34;, &#34;provider_token&#34;
+        ] = &#34;client_credentials&#34;,
+    ):
+        data = {
+            &#34;grant_type&#34;: grant_type,
+            &#34;client_id&#34;: client_id,
+            &#34;client_secret&#34;: client_secret,
+        }
+        if grant_type == &#34;client_credentials&#34;:
+            pass
+        elif grant_type == &#34;password&#34;:
+            if not username:
+                raise ValueError(&#34;Username is blank&#34;)
+            if not password:
+                raise ValueError(&#34;Password is blank&#34;)
+            data.update({&#34;username&#34;: username, &#34;password&#34;: password})
+        elif grant_type == &#34;refresh&#34;:
+            data.update({&#34;refresh_token&#34;: self.credentials[&#34;refresh_token&#34;]})
+        else:
+            raise NotImplemented
+        self.client_id = client_id
+        self.client_secret = client_secret
+
+        res = self.session.post(f&#34;{BASE_URL}/oauth/token&#34;, data=data)
+        data = res.json()
+        self.credentials = data
+        self.session.headers.update(
+            {&#34;Authorization&#34;: f&#34;{self.credentials[&#39;token_type&#39;]} {self.credentials[&#39;access_token&#39;]}&#34;}
+        )
+
+        if grant_type == &#34;refresh&#34;:
+            logger.info(&#34;Refreshed token.&#34;)
+        else:
+            logger.info(&#34;Logged in.&#34;)
+
+    def get_gfycat(self, gfy_id: str):
+        res = self.session.get(f&#34;{BASE_URL}/gfycats/{gfy_id}&#34;)
+        data = res.json()
+        return GfyItem(**self.transform_content_url_key(data[&#34;gfyItem&#34;]))
+
+    def new_gfycat_from_url(self, url: AnyHttpUrl):
+        raise NotImplemented
+
+    def new_gfycat_from_file(
+        self,
+        file: str | PathLike,
+        *,
+        title: str = None,
+        description: str = None,
+        tags: list[str] = None,
+        nsfw: bool = False,
+        ignore_md5_check: bool = False,
+        keep_audio: True,
+        private: False,
+    ) -&gt; str:
+        session = self.session
+        file = Path(file).resolve()
+        data = {
+            &#34;title&#34;: file.name if title is None else title,
+            &#34;nsfw&#34;: nsfw,
+            &#34;keepAudio&#34;: keep_audio,
+            &#34;noMd5&#34;: ignore_md5_check,
+            &#34;private&#34;: private,
+        }
+        if description is not None:
+            data[&#34;description&#34;] = description
+        if tags is not None:
+            data[&#34;tags&#34;] = tags
+        retries = Retry(total=100, backoff_factor=0.1)
+        session.mount(&#34;https://&#34;, adapter=HTTPAdapter(max_retries=retries))
+        res = session.post(f&#34;{BASE_URL}/gfycats&#34;, data=data)
+        metadata = res.json()
+        with open(file, &#34;rb&#34;) as f:
+            new_file = io.BytesIO(f.read())
+            new_file.name = metadata[&#34;gfyname&#34;]
+            new_file.seek(0)
+            m = MultipartEncoder(
+                fields={
+                    &#34;key&#34;: metadata[&#34;gfyname&#34;],
+                    &#34;file&#34;: (metadata[&#34;gfyname&#34;], new_file, &#34;video/mp4&#34;),
+                }
+            )
+            res = requests.post(&#34;https://filedrop.gfycat.com&#34;, data=m, headers={&#34;Content-Type&#34;: m.content_type})
+        if res.status_code &gt;= 400:
+            raise requests.exceptions.HTTPError(res.text)
+        return metadata[&#34;gfyname&#34;]
+
+    def check_upload_status(self, gfy_name: str):
+        raise NotImplemented
+
+    def update_gfycat(self, gfy_id: str, attribute: str, value: Any):
+        self.session.put(f&#34;{BASE_URL}/me/gfycats/{gfy_id}/{attribute}&#34;, data={&#34;value&#34;: value})
+        logger.info(f&#39;Updated Gfycat {gfy_id} {attribute} to &#34;{value}&#34;&#39;)
+
+    def delete_gfycat(self, gfy_id: str):
+        self.session.delete(f&#34;{BASE_URL}/me/gfycats/{gfy_id}&#34;)
+        logger.info(f&#34;Deleted Gfycat {gfy_id}&#34;)
+
+    def delete_gfycat_attribute(self, gfy_id: str, attribute: str):
+        self.session.delete(f&#34;{BASE_URL}/me/gfycats/{gfy_id}/{attribute}&#34;)
+        logger.info(f&#34;Deleted Gfycat {gfy_id} {attribute}&#34;)
+
+    def get_user_feed(self, username: str, cursor: str = None, count: int = None):
+        params = {}
+        if cursor is not None:
+            params[&#34;cursor&#34;] = cursor
+        if count is not None:
+            params[&#34;count&#34;] = count
+        res = self.session.get(f&#34;{BASE_URL}/users/{username}/gfycats&#34;, params=params)
+        data = res.json()
+        next_cursor: str = data[&#34;cursor&#34;]
+        return {
+            &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+            &#34;cursor&#34;: next_cursor,
+        }
+
+    def get_my_feed(self, cursor: str = None):
+        params = {}
+        if cursor is not None:
+            params[&#34;cursor&#34;] = cursor
+        res = self.session.get(f&#34;{BASE_URL}/me/gfycats&#34;, params=params)
+        data = res.json()
+        next_cursor: str = data[&#34;cursor&#34;]
+        return {
+            &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+            &#34;cursor&#34;: next_cursor,
+        }
+
+    def get_followers_feed(self, cursor: str = None):
+        params = {}
+        if cursor is not None:
+            params[&#34;cursor&#34;] = cursor
+        res = self.session.get(f&#34;{BASE_URL}/me/follows/gfycats&#34;)
+        data = res.json()
+        next_cursor: str = data[&#34;cursor&#34;]
+        return {
+            &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+            &#34;cursor&#34;: next_cursor,
+            &#34;count&#34;: data[&#34;count&#34;],
+            &#34;total_count&#34;: data[&#34;totalCount&#34;],
+        }
+
+    def get_my_albums(self):
+        res = self.session.get(f&#34;{BASE_URL}/me/album-folders&#34;)
+        data = res.json()
+        return [AlbumNode(**node) for node in data[0][&#34;nodes&#34;]]
+
+    def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: list[str] = None):
+        if contents is None:
+            contents = []
+        self.session.post(
+            f&#34;{BASE_URL}/me/album-folders/{new_id}&#34;,
+            data=dict(
+                title=title,
+                description=description,
+                contents=contents,
+            ),
+        )
+        logger.info(f&#39;Created album &#34;{title}&#34;&#39;)
+
+
+gpycat = Gfycat()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="gpycat.core.Gfycat"><code class="flex name class">
+<span>class <span class="ident">Gfycat</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Gfycat:
+    client_id: str = &#34;&#34;
+    client_secret: str = &#34;&#34;
+    username: str = &#34;&#34;
+    password: str = &#34;&#34;
+    credentials: dict[str, str | int] = {}
+    last_request_status: int = None
+
+    @staticmethod
+    def _raise_if_not_ok(response: Response, *args, **kwargs):
+        if not response.ok:
+            logger.error(response.text)
+            raise requests.exceptions.HTTPError(response.text)
+
+    @staticmethod
+    def _update_last_status(self, response: Response, *args, **kwargs):
+        self.last_request_status = response.status_code
+
+    @staticmethod
+    def _refresh_on_expire(response: Response, *args, **kwargs):
+        raise NotImplemented
+
+    def __init__(self):
+        self.session = GfySession()
+        self.session.hooks.update(
+            {
+                &#34;response&#34;: [
+                    self._raise_if_not_ok,
+                    lambda *args, **kwargs: self._update_last_status(self, *args, **kwargs),
+                ]
+            }
+        )
+
+    @staticmethod
+    def transform_content_url_key(gfy_item: dict):
+        return {
+            **gfy_item,
+            &#34;content_urls&#34;: {
+                **gfy_item[&#34;content_urls&#34;],
+                &#34;gif100px&#34;: gfy_item[&#34;content_urls&#34;][&#34;100pxGif&#34;],
+            },
+        }
+
+    @staticmethod
+    def transform_dashed_key(node: dict):
+        for k, v in node.items():
+            if &#34;-&#34; in k:
+                undashed: list[str] = k.split(&#34;-&#34;)
+                undashed = [u.capitalize() for i, u in enumerate(undashed) if i &gt; 0]
+                new_k = &#34;&#34;.join(undashed)
+                node[new_k] = v
+                del node[k]
+        return node
+
+    def auth(
+        self,
+        *,
+        client_id: str,
+        client_secret: str,
+        username: str = &#34;&#34;,
+        password: str = &#34;&#34;,
+        grant_type: Literal[
+            &#34;client_credentials&#34;, &#34;password&#34;, &#34;refresh&#34;, &#34;convert_code&#34;, &#34;provider_token&#34;
+        ] = &#34;client_credentials&#34;,
+    ):
+        data = {
+            &#34;grant_type&#34;: grant_type,
+            &#34;client_id&#34;: client_id,
+            &#34;client_secret&#34;: client_secret,
+        }
+        if grant_type == &#34;client_credentials&#34;:
+            pass
+        elif grant_type == &#34;password&#34;:
+            if not username:
+                raise ValueError(&#34;Username is blank&#34;)
+            if not password:
+                raise ValueError(&#34;Password is blank&#34;)
+            data.update({&#34;username&#34;: username, &#34;password&#34;: password})
+        elif grant_type == &#34;refresh&#34;:
+            data.update({&#34;refresh_token&#34;: self.credentials[&#34;refresh_token&#34;]})
+        else:
+            raise NotImplemented
+        self.client_id = client_id
+        self.client_secret = client_secret
+
+        res = self.session.post(f&#34;{BASE_URL}/oauth/token&#34;, data=data)
+        data = res.json()
+        self.credentials = data
+        self.session.headers.update(
+            {&#34;Authorization&#34;: f&#34;{self.credentials[&#39;token_type&#39;]} {self.credentials[&#39;access_token&#39;]}&#34;}
+        )
+
+        if grant_type == &#34;refresh&#34;:
+            logger.info(&#34;Refreshed token.&#34;)
+        else:
+            logger.info(&#34;Logged in.&#34;)
+
+    def get_gfycat(self, gfy_id: str):
+        res = self.session.get(f&#34;{BASE_URL}/gfycats/{gfy_id}&#34;)
+        data = res.json()
+        return GfyItem(**self.transform_content_url_key(data[&#34;gfyItem&#34;]))
+
+    def new_gfycat_from_url(self, url: AnyHttpUrl):
+        raise NotImplemented
+
+    def new_gfycat_from_file(
+        self,
+        file: str | PathLike,
+        *,
+        title: str = None,
+        description: str = None,
+        tags: list[str] = None,
+        nsfw: bool = False,
+        ignore_md5_check: bool = False,
+        keep_audio: True,
+        private: False,
+    ) -&gt; str:
+        session = self.session
+        file = Path(file).resolve()
+        data = {
+            &#34;title&#34;: file.name if title is None else title,
+            &#34;nsfw&#34;: nsfw,
+            &#34;keepAudio&#34;: keep_audio,
+            &#34;noMd5&#34;: ignore_md5_check,
+            &#34;private&#34;: private,
+        }
+        if description is not None:
+            data[&#34;description&#34;] = description
+        if tags is not None:
+            data[&#34;tags&#34;] = tags
+        retries = Retry(total=100, backoff_factor=0.1)
+        session.mount(&#34;https://&#34;, adapter=HTTPAdapter(max_retries=retries))
+        res = session.post(f&#34;{BASE_URL}/gfycats&#34;, data=data)
+        metadata = res.json()
+        with open(file, &#34;rb&#34;) as f:
+            new_file = io.BytesIO(f.read())
+            new_file.name = metadata[&#34;gfyname&#34;]
+            new_file.seek(0)
+            m = MultipartEncoder(
+                fields={
+                    &#34;key&#34;: metadata[&#34;gfyname&#34;],
+                    &#34;file&#34;: (metadata[&#34;gfyname&#34;], new_file, &#34;video/mp4&#34;),
+                }
+            )
+            res = requests.post(&#34;https://filedrop.gfycat.com&#34;, data=m, headers={&#34;Content-Type&#34;: m.content_type})
+        if res.status_code &gt;= 400:
+            raise requests.exceptions.HTTPError(res.text)
+        return metadata[&#34;gfyname&#34;]
+
+    def check_upload_status(self, gfy_name: str):
+        raise NotImplemented
+
+    def update_gfycat(self, gfy_id: str, attribute: str, value: Any):
+        self.session.put(f&#34;{BASE_URL}/me/gfycats/{gfy_id}/{attribute}&#34;, data={&#34;value&#34;: value})
+        logger.info(f&#39;Updated Gfycat {gfy_id} {attribute} to &#34;{value}&#34;&#39;)
+
+    def delete_gfycat(self, gfy_id: str):
+        self.session.delete(f&#34;{BASE_URL}/me/gfycats/{gfy_id}&#34;)
+        logger.info(f&#34;Deleted Gfycat {gfy_id}&#34;)
+
+    def delete_gfycat_attribute(self, gfy_id: str, attribute: str):
+        self.session.delete(f&#34;{BASE_URL}/me/gfycats/{gfy_id}/{attribute}&#34;)
+        logger.info(f&#34;Deleted Gfycat {gfy_id} {attribute}&#34;)
+
+    def get_user_feed(self, username: str, cursor: str = None, count: int = None):
+        params = {}
+        if cursor is not None:
+            params[&#34;cursor&#34;] = cursor
+        if count is not None:
+            params[&#34;count&#34;] = count
+        res = self.session.get(f&#34;{BASE_URL}/users/{username}/gfycats&#34;, params=params)
+        data = res.json()
+        next_cursor: str = data[&#34;cursor&#34;]
+        return {
+            &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+            &#34;cursor&#34;: next_cursor,
+        }
+
+    def get_my_feed(self, cursor: str = None):
+        params = {}
+        if cursor is not None:
+            params[&#34;cursor&#34;] = cursor
+        res = self.session.get(f&#34;{BASE_URL}/me/gfycats&#34;, params=params)
+        data = res.json()
+        next_cursor: str = data[&#34;cursor&#34;]
+        return {
+            &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+            &#34;cursor&#34;: next_cursor,
+        }
+
+    def get_followers_feed(self, cursor: str = None):
+        params = {}
+        if cursor is not None:
+            params[&#34;cursor&#34;] = cursor
+        res = self.session.get(f&#34;{BASE_URL}/me/follows/gfycats&#34;)
+        data = res.json()
+        next_cursor: str = data[&#34;cursor&#34;]
+        return {
+            &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+            &#34;cursor&#34;: next_cursor,
+            &#34;count&#34;: data[&#34;count&#34;],
+            &#34;total_count&#34;: data[&#34;totalCount&#34;],
+        }
+
+    def get_my_albums(self):
+        res = self.session.get(f&#34;{BASE_URL}/me/album-folders&#34;)
+        data = res.json()
+        return [AlbumNode(**node) for node in data[0][&#34;nodes&#34;]]
+
+    def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: list[str] = None):
+        if contents is None:
+            contents = []
+        self.session.post(
+            f&#34;{BASE_URL}/me/album-folders/{new_id}&#34;,
+            data=dict(
+                title=title,
+                description=description,
+                contents=contents,
+            ),
+        )
+        logger.info(f&#39;Created album &#34;{title}&#34;&#39;)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="gpycat.core.Gfycat.client_id"><code class="name">var <span class="ident">client_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.core.Gfycat.client_secret"><code class="name">var <span class="ident">client_secret</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.core.Gfycat.credentials"><code class="name">var <span class="ident">credentials</span> : dict[str, str | int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.core.Gfycat.last_request_status"><code class="name">var <span class="ident">last_request_status</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.core.Gfycat.password"><code class="name">var <span class="ident">password</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="gpycat.core.Gfycat.username"><code class="name">var <span class="ident">username</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="gpycat.core.Gfycat.transform_content_url_key"><code class="name flex">
+<span>def <span class="ident">transform_content_url_key</span></span>(<span>gfy_item: dict)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def transform_content_url_key(gfy_item: dict):
+    return {
+        **gfy_item,
+        &#34;content_urls&#34;: {
+            **gfy_item[&#34;content_urls&#34;],
+            &#34;gif100px&#34;: gfy_item[&#34;content_urls&#34;][&#34;100pxGif&#34;],
+        },
+    }</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.transform_dashed_key"><code class="name flex">
+<span>def <span class="ident">transform_dashed_key</span></span>(<span>node: dict)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def transform_dashed_key(node: dict):
+    for k, v in node.items():
+        if &#34;-&#34; in k:
+            undashed: list[str] = k.split(&#34;-&#34;)
+            undashed = [u.capitalize() for i, u in enumerate(undashed) if i &gt; 0]
+            new_k = &#34;&#34;.join(undashed)
+            node[new_k] = v
+            del node[k]
+    return node</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="gpycat.core.Gfycat.auth"><code class="name flex">
+<span>def <span class="ident">auth</span></span>(<span>self, *, client_id: str, client_secret: str, username: str = '', password: str = '', grant_type: Literal['client_credentials', 'password', 'refresh', 'convert_code', 'provider_token'] = 'client_credentials')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def auth(
+    self,
+    *,
+    client_id: str,
+    client_secret: str,
+    username: str = &#34;&#34;,
+    password: str = &#34;&#34;,
+    grant_type: Literal[
+        &#34;client_credentials&#34;, &#34;password&#34;, &#34;refresh&#34;, &#34;convert_code&#34;, &#34;provider_token&#34;
+    ] = &#34;client_credentials&#34;,
+):
+    data = {
+        &#34;grant_type&#34;: grant_type,
+        &#34;client_id&#34;: client_id,
+        &#34;client_secret&#34;: client_secret,
+    }
+    if grant_type == &#34;client_credentials&#34;:
+        pass
+    elif grant_type == &#34;password&#34;:
+        if not username:
+            raise ValueError(&#34;Username is blank&#34;)
+        if not password:
+            raise ValueError(&#34;Password is blank&#34;)
+        data.update({&#34;username&#34;: username, &#34;password&#34;: password})
+    elif grant_type == &#34;refresh&#34;:
+        data.update({&#34;refresh_token&#34;: self.credentials[&#34;refresh_token&#34;]})
+    else:
+        raise NotImplemented
+    self.client_id = client_id
+    self.client_secret = client_secret
+
+    res = self.session.post(f&#34;{BASE_URL}/oauth/token&#34;, data=data)
+    data = res.json()
+    self.credentials = data
+    self.session.headers.update(
+        {&#34;Authorization&#34;: f&#34;{self.credentials[&#39;token_type&#39;]} {self.credentials[&#39;access_token&#39;]}&#34;}
+    )
+
+    if grant_type == &#34;refresh&#34;:
+        logger.info(&#34;Refreshed token.&#34;)
+    else:
+        logger.info(&#34;Logged in.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.check_upload_status"><code class="name flex">
+<span>def <span class="ident">check_upload_status</span></span>(<span>self, gfy_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_upload_status(self, gfy_name: str):
+    raise NotImplemented</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.create_album"><code class="name flex">
+<span>def <span class="ident">create_album</span></span>(<span>self, new_id: str, title: str, description: str = '', contents: list[str] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: list[str] = None):
+    if contents is None:
+        contents = []
+    self.session.post(
+        f&#34;{BASE_URL}/me/album-folders/{new_id}&#34;,
+        data=dict(
+            title=title,
+            description=description,
+            contents=contents,
+        ),
+    )
+    logger.info(f&#39;Created album &#34;{title}&#34;&#39;)</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.delete_gfycat"><code class="name flex">
+<span>def <span class="ident">delete_gfycat</span></span>(<span>self, gfy_id: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete_gfycat(self, gfy_id: str):
+    self.session.delete(f&#34;{BASE_URL}/me/gfycats/{gfy_id}&#34;)
+    logger.info(f&#34;Deleted Gfycat {gfy_id}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.delete_gfycat_attribute"><code class="name flex">
+<span>def <span class="ident">delete_gfycat_attribute</span></span>(<span>self, gfy_id: str, attribute: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete_gfycat_attribute(self, gfy_id: str, attribute: str):
+    self.session.delete(f&#34;{BASE_URL}/me/gfycats/{gfy_id}/{attribute}&#34;)
+    logger.info(f&#34;Deleted Gfycat {gfy_id} {attribute}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.get_followers_feed"><code class="name flex">
+<span>def <span class="ident">get_followers_feed</span></span>(<span>self, cursor: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_followers_feed(self, cursor: str = None):
+    params = {}
+    if cursor is not None:
+        params[&#34;cursor&#34;] = cursor
+    res = self.session.get(f&#34;{BASE_URL}/me/follows/gfycats&#34;)
+    data = res.json()
+    next_cursor: str = data[&#34;cursor&#34;]
+    return {
+        &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+        &#34;cursor&#34;: next_cursor,
+        &#34;count&#34;: data[&#34;count&#34;],
+        &#34;total_count&#34;: data[&#34;totalCount&#34;],
+    }</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.get_gfycat"><code class="name flex">
+<span>def <span class="ident">get_gfycat</span></span>(<span>self, gfy_id: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_gfycat(self, gfy_id: str):
+    res = self.session.get(f&#34;{BASE_URL}/gfycats/{gfy_id}&#34;)
+    data = res.json()
+    return GfyItem(**self.transform_content_url_key(data[&#34;gfyItem&#34;]))</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.get_my_albums"><code class="name flex">
+<span>def <span class="ident">get_my_albums</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_my_albums(self):
+    res = self.session.get(f&#34;{BASE_URL}/me/album-folders&#34;)
+    data = res.json()
+    return [AlbumNode(**node) for node in data[0][&#34;nodes&#34;]]</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.get_my_feed"><code class="name flex">
+<span>def <span class="ident">get_my_feed</span></span>(<span>self, cursor: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_my_feed(self, cursor: str = None):
+    params = {}
+    if cursor is not None:
+        params[&#34;cursor&#34;] = cursor
+    res = self.session.get(f&#34;{BASE_URL}/me/gfycats&#34;, params=params)
+    data = res.json()
+    next_cursor: str = data[&#34;cursor&#34;]
+    return {
+        &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+        &#34;cursor&#34;: next_cursor,
+    }</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.get_user_feed"><code class="name flex">
+<span>def <span class="ident">get_user_feed</span></span>(<span>self, username: str, cursor: str = None, count: int = None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user_feed(self, username: str, cursor: str = None, count: int = None):
+    params = {}
+    if cursor is not None:
+        params[&#34;cursor&#34;] = cursor
+    if count is not None:
+        params[&#34;count&#34;] = count
+    res = self.session.get(f&#34;{BASE_URL}/users/{username}/gfycats&#34;, params=params)
+    data = res.json()
+    next_cursor: str = data[&#34;cursor&#34;]
+    return {
+        &#34;gfycats&#34;: [GfyItem(**self.transform_content_url_key(d)) for d in data[&#34;gfycats&#34;]],
+        &#34;cursor&#34;: next_cursor,
+    }</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.new_gfycat_from_file"><code class="name flex">
+<span>def <span class="ident">new_gfycat_from_file</span></span>(<span>self, file: str | os.PathLike, *, title: str = None, description: str = None, tags: list[str] = None, nsfw: bool = False, ignore_md5_check: bool = False, keep_audio: True, private: False) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def new_gfycat_from_file(
+    self,
+    file: str | PathLike,
+    *,
+    title: str = None,
+    description: str = None,
+    tags: list[str] = None,
+    nsfw: bool = False,
+    ignore_md5_check: bool = False,
+    keep_audio: True,
+    private: False,
+) -&gt; str:
+    session = self.session
+    file = Path(file).resolve()
+    data = {
+        &#34;title&#34;: file.name if title is None else title,
+        &#34;nsfw&#34;: nsfw,
+        &#34;keepAudio&#34;: keep_audio,
+        &#34;noMd5&#34;: ignore_md5_check,
+        &#34;private&#34;: private,
+    }
+    if description is not None:
+        data[&#34;description&#34;] = description
+    if tags is not None:
+        data[&#34;tags&#34;] = tags
+    retries = Retry(total=100, backoff_factor=0.1)
+    session.mount(&#34;https://&#34;, adapter=HTTPAdapter(max_retries=retries))
+    res = session.post(f&#34;{BASE_URL}/gfycats&#34;, data=data)
+    metadata = res.json()
+    with open(file, &#34;rb&#34;) as f:
+        new_file = io.BytesIO(f.read())
+        new_file.name = metadata[&#34;gfyname&#34;]
+        new_file.seek(0)
+        m = MultipartEncoder(
+            fields={
+                &#34;key&#34;: metadata[&#34;gfyname&#34;],
+                &#34;file&#34;: (metadata[&#34;gfyname&#34;], new_file, &#34;video/mp4&#34;),
+            }
+        )
+        res = requests.post(&#34;https://filedrop.gfycat.com&#34;, data=m, headers={&#34;Content-Type&#34;: m.content_type})
+    if res.status_code &gt;= 400:
+        raise requests.exceptions.HTTPError(res.text)
+    return metadata[&#34;gfyname&#34;]</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.new_gfycat_from_url"><code class="name flex">
+<span>def <span class="ident">new_gfycat_from_url</span></span>(<span>self, url: pydantic.networks.AnyHttpUrl)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def new_gfycat_from_url(self, url: AnyHttpUrl):
+    raise NotImplemented</code></pre>
+</details>
+</dd>
+<dt id="gpycat.core.Gfycat.update_gfycat"><code class="name flex">
+<span>def <span class="ident">update_gfycat</span></span>(<span>self, gfy_id: str, attribute: str, value: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_gfycat(self, gfy_id: str, attribute: str, value: Any):
+    self.session.put(f&#34;{BASE_URL}/me/gfycats/{gfy_id}/{attribute}&#34;, data={&#34;value&#34;: value})
+    logger.info(f&#39;Updated Gfycat {gfy_id} {attribute} to &#34;{value}&#34;&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="gpycat" href="index.html">gpycat</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="gpycat.core.Gfycat" href="#gpycat.core.Gfycat">Gfycat</a></code></h4>
+<ul class="">
+<li><code><a title="gpycat.core.Gfycat.auth" href="#gpycat.core.Gfycat.auth">auth</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.check_upload_status" href="#gpycat.core.Gfycat.check_upload_status">check_upload_status</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.client_id" href="#gpycat.core.Gfycat.client_id">client_id</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.client_secret" href="#gpycat.core.Gfycat.client_secret">client_secret</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.create_album" href="#gpycat.core.Gfycat.create_album">create_album</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.credentials" href="#gpycat.core.Gfycat.credentials">credentials</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.delete_gfycat" href="#gpycat.core.Gfycat.delete_gfycat">delete_gfycat</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.delete_gfycat_attribute" href="#gpycat.core.Gfycat.delete_gfycat_attribute">delete_gfycat_attribute</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.get_followers_feed" href="#gpycat.core.Gfycat.get_followers_feed">get_followers_feed</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.get_gfycat" href="#gpycat.core.Gfycat.get_gfycat">get_gfycat</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.get_my_albums" href="#gpycat.core.Gfycat.get_my_albums">get_my_albums</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.get_my_feed" href="#gpycat.core.Gfycat.get_my_feed">get_my_feed</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.get_user_feed" href="#gpycat.core.Gfycat.get_user_feed">get_user_feed</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.last_request_status" href="#gpycat.core.Gfycat.last_request_status">last_request_status</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.new_gfycat_from_file" href="#gpycat.core.Gfycat.new_gfycat_from_file">new_gfycat_from_file</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.new_gfycat_from_url" href="#gpycat.core.Gfycat.new_gfycat_from_url">new_gfycat_from_url</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.password" href="#gpycat.core.Gfycat.password">password</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.transform_content_url_key" href="#gpycat.core.Gfycat.transform_content_url_key">transform_content_url_key</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.transform_dashed_key" href="#gpycat.core.Gfycat.transform_dashed_key">transform_dashed_key</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.update_gfycat" href="#gpycat.core.Gfycat.update_gfycat">update_gfycat</a></code></li>
+<li><code><a title="gpycat.core.Gfycat.username" href="#gpycat.core.Gfycat.username">username</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
