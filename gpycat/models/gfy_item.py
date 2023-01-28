@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 
 from pydantic import AnyHttpUrl, BaseModel, confloat, conint
 from pydantic.color import Color
@@ -40,7 +40,7 @@ class GfyItem(BaseModel):
     content_urls: ContentUrls
     createDate: str
     description: Optional[str]
-    frameRate: conint(gt=0) | confloat(gt=0)
+    frameRate: Union[conint(gt=0), confloat(gt=0)]
     gatekeeper: int
     gfyId: str
     gfyName: str

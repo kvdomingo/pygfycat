@@ -1,7 +1,7 @@
 import io
 from os import PathLike
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, Union
 
 import requests.exceptions
 from loguru import logger
@@ -21,7 +21,7 @@ class Gfycat:
     client_secret: str = ""
     username: str = ""
     password: str = ""
-    credentials: dict[str, str | int] = {}
+    credentials: dict[str, Union[str, int]] = {}
     last_request_status: int = None
 
     @staticmethod
@@ -123,7 +123,7 @@ class Gfycat:
 
     def new_gfycat_from_file(
         self,
-        file: str | PathLike,
+        file: Union[str, PathLike],
         *,
         title: str = None,
         description: str = None,
