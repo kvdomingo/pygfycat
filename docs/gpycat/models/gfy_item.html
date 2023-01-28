@@ -26,7 +26,7 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from typing import Optional, Union
+<pre><code class="python">from typing import List, Optional, Union
 
 from pydantic import AnyHttpUrl, BaseModel, confloat, conint
 from pydantic.color import Color
@@ -80,7 +80,7 @@ class GfyItem(BaseModel):
     hasTransparency: bool
     height: conint(gt=0)
     isSticker: bool
-    languageCategories: list[Optional[str]]
+    languageCategories: List[Optional[str]]
     likes: conint(ge=0)
     max1mbGif: AnyHttpUrl
     max2mbGif: AnyHttpUrl
@@ -94,7 +94,7 @@ class GfyItem(BaseModel):
     numFrames: conint(gt=0)
     posterUrl: Optional[str]
     published: conint(ge=0)
-    tags: list[Optional[str]]
+    tags: List[Optional[str]]
     thumb100PosterUrl: Optional[AnyHttpUrl]
     title: Optional[str]
     userData: Optional[UserData]
@@ -259,7 +259,7 @@ class GfyItem(BaseModel):
     hasTransparency: bool
     height: conint(gt=0)
     isSticker: bool
-    languageCategories: list[Optional[str]]
+    languageCategories: List[Optional[str]]
     likes: conint(ge=0)
     max1mbGif: AnyHttpUrl
     max2mbGif: AnyHttpUrl
@@ -273,7 +273,7 @@ class GfyItem(BaseModel):
     numFrames: conint(gt=0)
     posterUrl: Optional[str]
     published: conint(ge=0)
-    tags: list[Optional[str]]
+    tags: List[Optional[str]]
     thumb100PosterUrl: Optional[AnyHttpUrl]
     title: Optional[str]
     userData: Optional[UserData]
@@ -357,7 +357,7 @@ class GfyItem(BaseModel):
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="gpycat.models.gfy_item.GfyItem.languageCategories"><code class="name">var <span class="ident">languageCategories</span> : list[typing.Optional[str]]</code></dt>
+<dt id="gpycat.models.gfy_item.GfyItem.languageCategories"><code class="name">var <span class="ident">languageCategories</span> : List[Optional[str]]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -413,7 +413,7 @@ class GfyItem(BaseModel):
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="gpycat.models.gfy_item.GfyItem.tags"><code class="name">var <span class="ident">tags</span> : list[typing.Optional[str]]</code></dt>
+<dt id="gpycat.models.gfy_item.GfyItem.tags"><code class="name">var <span class="ident">tags</span> : List[Optional[str]]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
