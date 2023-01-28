@@ -1,7 +1,7 @@
 import io
 from os import PathLike
 from pathlib import Path
-from typing import Any, List, Literal, Union
+from typing import Any, Dict, List, Literal, Union
 
 import requests.exceptions
 from loguru import logger
@@ -21,7 +21,7 @@ class Gfycat:
     client_secret: str = ""
     username: str = ""
     password: str = ""
-    credentials: dict[str, Union[str, int]] = {}
+    credentials: Dict[str, Union[str, int]] = {}
     last_request_status: int = None
 
     @staticmethod
