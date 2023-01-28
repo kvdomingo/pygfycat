@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
       - uses: pre-commit/action@v3.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -31,6 +33,9 @@ jobs:
           poetry install
       - name: Run tests
         run: poetry run coverage run -m pytest
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
       - name: Update code coverage badge
         run: poetry run coverage-badge -o coverage.svg -f
         if: ${{ matrix.python-version == 3.10 }}
