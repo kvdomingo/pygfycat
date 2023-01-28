@@ -23,13 +23,5 @@ repos:
     hooks:
       - id: gitleaks
         args: ['--verbose']
-  - repo: local
-    hooks:
-      - id: pdoc
-        name: build docs staticfiles
-        language: system
-        entry: poetry run pdoc --html --output-dir docs/ --force gpycat
-        files: ^gpycat/
-        always_run: true
 
 exclude: docs/

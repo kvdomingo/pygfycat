@@ -1,7 +1,7 @@
 import io
 from os import PathLike
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Dict, List, Literal, Union
 
 import requests.exceptions
 from loguru import logger
@@ -21,7 +21,7 @@ class Gfycat:
     client_secret: str = ""
     username: str = ""
     password: str = ""
-    credentials: dict[str, str | int] = {}
+    credentials: Dict[str, Union[str, int]] = {}
     last_request_status: int = None
 
     @staticmethod
@@ -50,7 +50,16 @@ class Gfycat:
         )
 
     @staticmethod
-    def transform_content_url_key(gfy_item: dict):
+    def transform_content_url_key(gfy_item: dict) -> dict:
+        """
+        Transform keys that start with numbers so that they start with alphabetical characters instead.
+
+        Args:
+            gfy_item (dict): A pre-GfyItem response from the API.
+
+        Returns:
+            dict: A pre-GfyItem dict with fixed content URL subkeys.
+        """
         return {
             **gfy_item,
             "content_urls": {
@@ -63,7 +72,7 @@ class Gfycat:
     def transform_dashed_key(node: dict):
         for k, v in node.items():
             if "-" in k:
-                undashed: list[str] = k.split("-")
+                undashed: List[str] = k.split("-")
                 undashed = [u.capitalize() for i, u in enumerate(undashed) if i > 0]
                 new_k = "".join(undashed)
                 node[new_k] = v
@@ -123,11 +132,11 @@ class Gfycat:
 
     def new_gfycat_from_file(
         self,
-        file: str | PathLike,
+        file: Union[str, PathLike],
         *,
         title: str = None,
         description: str = None,
-        tags: list[str] = None,
+        tags: List[str] = None,
         nsfw: bool = False,
         ignore_md5_check: bool = False,
         keep_audio: True,
@@ -225,7 +234,7 @@ class Gfycat:
         data = res.json()
         return [AlbumNode(**node) for node in data[0]["nodes"]]
 
-    def create_album(self, new_id: str, title: str, description: str = "", contents: list[str] = None):
+    def create_album(self, new_id: str, title: str, description: str = "", contents: List[str] = None):
         if contents is None:
             contents = []
         self.session.post(

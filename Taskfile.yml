@@ -14,6 +14,11 @@ tasks:
       - poetry run python -m scripts.make_dotenv
       - poetry run python -m scripts.make_dotenvrc
 
+  test:
+    desc: Run unit tests and generate coverage report
+    cmds:
+      - poetry run coverage run -m pytest
+
   dev-docs:
     desc: Run local server for docs
     cmds:

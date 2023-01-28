@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import AnyHttpUrl, BaseModel, conint
 
@@ -29,4 +29,4 @@ class AlbumNode(BaseModel):
     mjpgUrl: AnyHttpUrl
     gifUrl: AnyHttpUrl
     published: conint(ge=0)
-    nodes: list[Optional["AlbumNode"]]
+    nodes: List[Optional["AlbumNode"]]

@@ -29,7 +29,7 @@
 <pre><code class="python">import io
 from os import PathLike
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Dict, List, Literal, Union
 
 import requests.exceptions
 from loguru import logger
@@ -49,7 +49,7 @@ class Gfycat:
     client_secret: str = &#34;&#34;
     username: str = &#34;&#34;
     password: str = &#34;&#34;
-    credentials: dict[str, str | int] = {}
+    credentials: Dict[str, Union[str, int]] = {}
     last_request_status: int = None
 
     @staticmethod
@@ -78,7 +78,16 @@ class Gfycat:
         )
 
     @staticmethod
-    def transform_content_url_key(gfy_item: dict):
+    def transform_content_url_key(gfy_item: dict) -&gt; dict:
+        &#34;&#34;&#34;
+        Transform keys that start with numbers so that they start with alphabetical characters instead.
+
+        Args:
+            gfy_item (dict): A pre-GfyItem response from the API.
+
+        Returns:
+            dict: A pre-GfyItem dict with fixed content URL subkeys.
+        &#34;&#34;&#34;
         return {
             **gfy_item,
             &#34;content_urls&#34;: {
@@ -91,7 +100,7 @@ class Gfycat:
     def transform_dashed_key(node: dict):
         for k, v in node.items():
             if &#34;-&#34; in k:
-                undashed: list[str] = k.split(&#34;-&#34;)
+                undashed: List[str] = k.split(&#34;-&#34;)
                 undashed = [u.capitalize() for i, u in enumerate(undashed) if i &gt; 0]
                 new_k = &#34;&#34;.join(undashed)
                 node[new_k] = v
@@ -151,11 +160,11 @@ class Gfycat:
 
     def new_gfycat_from_file(
         self,
-        file: str | PathLike,
+        file: Union[str, PathLike],
         *,
         title: str = None,
         description: str = None,
-        tags: list[str] = None,
+        tags: List[str] = None,
         nsfw: bool = False,
         ignore_md5_check: bool = False,
         keep_audio: True,
@@ -253,7 +262,7 @@ class Gfycat:
         data = res.json()
         return [AlbumNode(**node) for node in data[0][&#34;nodes&#34;]]
 
-    def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: list[str] = None):
+    def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: List[str] = None):
         if contents is None:
             contents = []
         self.session.post(
@@ -293,7 +302,7 @@ gpycat = Gfycat()</code></pre>
     client_secret: str = &#34;&#34;
     username: str = &#34;&#34;
     password: str = &#34;&#34;
-    credentials: dict[str, str | int] = {}
+    credentials: Dict[str, Union[str, int]] = {}
     last_request_status: int = None
 
     @staticmethod
@@ -322,7 +331,16 @@ gpycat = Gfycat()</code></pre>
         )
 
     @staticmethod
-    def transform_content_url_key(gfy_item: dict):
+    def transform_content_url_key(gfy_item: dict) -&gt; dict:
+        &#34;&#34;&#34;
+        Transform keys that start with numbers so that they start with alphabetical characters instead.
+
+        Args:
+            gfy_item (dict): A pre-GfyItem response from the API.
+
+        Returns:
+            dict: A pre-GfyItem dict with fixed content URL subkeys.
+        &#34;&#34;&#34;
         return {
             **gfy_item,
             &#34;content_urls&#34;: {
@@ -335,7 +353,7 @@ gpycat = Gfycat()</code></pre>
     def transform_dashed_key(node: dict):
         for k, v in node.items():
             if &#34;-&#34; in k:
-                undashed: list[str] = k.split(&#34;-&#34;)
+                undashed: List[str] = k.split(&#34;-&#34;)
                 undashed = [u.capitalize() for i, u in enumerate(undashed) if i &gt; 0]
                 new_k = &#34;&#34;.join(undashed)
                 node[new_k] = v
@@ -395,11 +413,11 @@ gpycat = Gfycat()</code></pre>
 
     def new_gfycat_from_file(
         self,
-        file: str | PathLike,
+        file: Union[str, PathLike],
         *,
         title: str = None,
         description: str = None,
-        tags: list[str] = None,
+        tags: List[str] = None,
         nsfw: bool = False,
         ignore_md5_check: bool = False,
         keep_audio: True,
@@ -497,7 +515,7 @@ gpycat = Gfycat()</code></pre>
         data = res.json()
         return [AlbumNode(**node) for node in data[0][&#34;nodes&#34;]]
 
-    def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: list[str] = None):
+    def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: List[str] = None):
         if contents is None:
             contents = []
         self.session.post(
@@ -520,7 +538,7 @@ gpycat = Gfycat()</code></pre>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="gpycat.core.Gfycat.credentials"><code class="name">var <span class="ident">credentials</span> : dict[str, str | int]</code></dt>
+<dt id="gpycat.core.Gfycat.credentials"><code class="name">var <span class="ident">credentials</span> : Dict[str, Union[str, int]]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -540,16 +558,35 @@ gpycat = Gfycat()</code></pre>
 <h3>Static methods</h3>
 <dl>
 <dt id="gpycat.core.Gfycat.transform_content_url_key"><code class="name flex">
-<span>def <span class="ident">transform_content_url_key</span></span>(<span>gfy_item: dict)</span>
+<span>def <span class="ident">transform_content_url_key</span></span>(<span>gfy_item: dict) ‑> dict</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Transform keys that start with numbers so that they start with alphabetical characters instead.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>gfy_item</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A pre-GfyItem response from the API.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>A pre-GfyItem dict with fixed content URL subkeys.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@staticmethod
-def transform_content_url_key(gfy_item: dict):
+def transform_content_url_key(gfy_item: dict) -&gt; dict:
+    &#34;&#34;&#34;
+    Transform keys that start with numbers so that they start with alphabetical characters instead.
+
+    Args:
+        gfy_item (dict): A pre-GfyItem response from the API.
+
+    Returns:
+        dict: A pre-GfyItem dict with fixed content URL subkeys.
+    &#34;&#34;&#34;
     return {
         **gfy_item,
         &#34;content_urls&#34;: {
@@ -572,7 +609,7 @@ def transform_content_url_key(gfy_item: dict):
 def transform_dashed_key(node: dict):
     for k, v in node.items():
         if &#34;-&#34; in k:
-            undashed: list[str] = k.split(&#34;-&#34;)
+            undashed: List[str] = k.split(&#34;-&#34;)
             undashed = [u.capitalize() for i, u in enumerate(undashed) if i &gt; 0]
             new_k = &#34;&#34;.join(undashed)
             node[new_k] = v
@@ -650,7 +687,7 @@ def transform_dashed_key(node: dict):
 </details>
 </dd>
 <dt id="gpycat.core.Gfycat.create_album"><code class="name flex">
-<span>def <span class="ident">create_album</span></span>(<span>self, new_id: str, title: str, description: str = '', contents: list[str] = None)</span>
+<span>def <span class="ident">create_album</span></span>(<span>self, new_id: str, title: str, description: str = '', contents: List[str] = None)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -658,7 +695,7 @@ def transform_dashed_key(node: dict):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: list[str] = None):
+<pre><code class="python">def create_album(self, new_id: str, title: str, description: str = &#34;&#34;, contents: List[str] = None):
     if contents is None:
         contents = []
     self.session.post(
@@ -801,7 +838,7 @@ def transform_dashed_key(node: dict):
 </details>
 </dd>
 <dt id="gpycat.core.Gfycat.new_gfycat_from_file"><code class="name flex">
-<span>def <span class="ident">new_gfycat_from_file</span></span>(<span>self, file: str | os.PathLike, *, title: str = None, description: str = None, tags: list[str] = None, nsfw: bool = False, ignore_md5_check: bool = False, keep_audio: True, private: False) ‑> str</span>
+<span>def <span class="ident">new_gfycat_from_file</span></span>(<span>self, file: Union[str, os.PathLike], *, title: str = None, description: str = None, tags: List[str] = None, nsfw: bool = False, ignore_md5_check: bool = False, keep_audio: True, private: False) ‑> str</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -811,11 +848,11 @@ def transform_dashed_key(node: dict):
 </summary>
 <pre><code class="python">def new_gfycat_from_file(
     self,
-    file: str | PathLike,
+    file: Union[str, PathLike],
     *,
     title: str = None,
     description: str = None,
-    tags: list[str] = None,
+    tags: List[str] = None,
     nsfw: bool = False,
     ignore_md5_check: bool = False,
     keep_audio: True,

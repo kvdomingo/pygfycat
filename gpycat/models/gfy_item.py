@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional, Union
 
 from pydantic import AnyHttpUrl, BaseModel, confloat, conint
 from pydantic.color import Color
@@ -40,7 +40,7 @@ class GfyItem(BaseModel):
     content_urls: ContentUrls
     createDate: str
     description: Optional[str]
-    frameRate: conint(gt=0) | confloat(gt=0)
+    frameRate: Union[conint(gt=0), confloat(gt=0)]
     gatekeeper: int
     gfyId: str
     gfyName: str
@@ -52,7 +52,7 @@ class GfyItem(BaseModel):
     hasTransparency: bool
     height: conint(gt=0)
     isSticker: bool
-    languageCategories: list[Optional[str]]
+    languageCategories: List[Optional[str]]
     likes: conint(ge=0)
     max1mbGif: AnyHttpUrl
     max2mbGif: AnyHttpUrl
@@ -66,7 +66,7 @@ class GfyItem(BaseModel):
     numFrames: conint(gt=0)
     posterUrl: Optional[str]
     published: conint(ge=0)
-    tags: list[Optional[str]]
+    tags: List[Optional[str]]
     thumb100PosterUrl: Optional[AnyHttpUrl]
     title: Optional[str]
     userData: Optional[UserData]
