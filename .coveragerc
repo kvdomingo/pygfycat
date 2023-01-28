@@ -1,0 +1,7 @@
+[run]
+source = .
+omit = */tests/*,*/scripts/*
+
+[report]
+omit = */tests/*,*/scripts/*
+precision = 1
