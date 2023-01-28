@@ -8,7 +8,7 @@ on:
       - synchronize
 
 jobs:
-  unit-tests:
+  make-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
