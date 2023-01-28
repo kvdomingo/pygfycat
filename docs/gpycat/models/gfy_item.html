@@ -26,7 +26,7 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from typing import Optional
+<pre><code class="python">from typing import Optional, Union
 
 from pydantic import AnyHttpUrl, BaseModel, confloat, conint
 from pydantic.color import Color
@@ -68,7 +68,7 @@ class GfyItem(BaseModel):
     content_urls: ContentUrls
     createDate: str
     description: Optional[str]
-    frameRate: conint(gt=0) | confloat(gt=0)
+    frameRate: Union[conint(gt=0), confloat(gt=0)]
     gatekeeper: int
     gfyId: str
     gfyName: str
@@ -247,7 +247,7 @@ class GfyItem(BaseModel):
     content_urls: ContentUrls
     createDate: str
     description: Optional[str]
-    frameRate: conint(gt=0) | confloat(gt=0)
+    frameRate: Union[conint(gt=0), confloat(gt=0)]
     gatekeeper: int
     gfyId: str
     gfyName: str
@@ -309,7 +309,7 @@ class GfyItem(BaseModel):
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="gpycat.models.gfy_item.GfyItem.frameRate"><code class="name">var <span class="ident">frameRate</span> : gpycat.models.gfy_item.ConstrainedIntValue | gpycat.models.gfy_item.ConstrainedFloatValue</code></dt>
+<dt id="gpycat.models.gfy_item.GfyItem.frameRate"><code class="name">var <span class="ident">frameRate</span> : Union[gpycat.models.gfy_item.ConstrainedIntValue, gpycat.models.gfy_item.ConstrainedFloatValue]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>

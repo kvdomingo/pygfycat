@@ -29,7 +29,7 @@
 <pre><code class="python">import io
 from os import PathLike
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, Union
 
 import requests.exceptions
 from loguru import logger
@@ -49,7 +49,7 @@ class Gfycat:
     client_secret: str = &#34;&#34;
     username: str = &#34;&#34;
     password: str = &#34;&#34;
-    credentials: dict[str, str | int] = {}
+    credentials: dict[str, Union[str, int]] = {}
     last_request_status: int = None
 
     @staticmethod
@@ -151,7 +151,7 @@ class Gfycat:
 
     def new_gfycat_from_file(
         self,
-        file: str | PathLike,
+        file: Union[str, PathLike],
         *,
         title: str = None,
         description: str = None,
@@ -293,7 +293,7 @@ gpycat = Gfycat()</code></pre>
     client_secret: str = &#34;&#34;
     username: str = &#34;&#34;
     password: str = &#34;&#34;
-    credentials: dict[str, str | int] = {}
+    credentials: dict[str, Union[str, int]] = {}
     last_request_status: int = None
 
     @staticmethod
@@ -395,7 +395,7 @@ gpycat = Gfycat()</code></pre>
 
     def new_gfycat_from_file(
         self,
-        file: str | PathLike,
+        file: Union[str, PathLike],
         *,
         title: str = None,
         description: str = None,
@@ -520,7 +520,7 @@ gpycat = Gfycat()</code></pre>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="gpycat.core.Gfycat.credentials"><code class="name">var <span class="ident">credentials</span> : dict[str, str | int]</code></dt>
+<dt id="gpycat.core.Gfycat.credentials"><code class="name">var <span class="ident">credentials</span> : dict[str, typing.Union[str, int]]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -801,7 +801,7 @@ def transform_dashed_key(node: dict):
 </details>
 </dd>
 <dt id="gpycat.core.Gfycat.new_gfycat_from_file"><code class="name flex">
-<span>def <span class="ident">new_gfycat_from_file</span></span>(<span>self, file: str | os.PathLike, *, title: str = None, description: str = None, tags: list[str] = None, nsfw: bool = False, ignore_md5_check: bool = False, keep_audio: True, private: False) ‑> str</span>
+<span>def <span class="ident">new_gfycat_from_file</span></span>(<span>self, file: Union[str, os.PathLike], *, title: str = None, description: str = None, tags: list[str] = None, nsfw: bool = False, ignore_md5_check: bool = False, keep_audio: True, private: False) ‑> str</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -811,7 +811,7 @@ def transform_dashed_key(node: dict):
 </summary>
 <pre><code class="python">def new_gfycat_from_file(
     self,
-    file: str | PathLike,
+    file: Union[str, PathLike],
     *,
     title: str = None,
     description: str = None,
